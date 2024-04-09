@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"content="maximum-scale=1.0,width=device-width"/>
+    <title>calculatrice</title>
+<link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script>
+</head>
+<body>
+    <input type="text" readonly="t"><br>
+    <div class="del"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9.75 14.25 12m0 0 2.25 2.25M14.25 12l2.25-2.25M14.25 12 12 14.25m-2.58 4.92-6.374-6.375a1.125 1.125 0 0 1 0-1.59L9.42 4.83c.21-.211.497-.33.795-.33H19.5a2.25 2.25 0 0 1 2.25 2.25v10.5a2.25 2.25 0 0 1-2.25 2.25h-9.284c-.298 0-.585-.119-.795-.33Z" />
+</svg></div>    
+    <div class="calcu">
+       
+    <p>9</p><p>8</p><p>7</p>
+    <p style="color: #40a1ff;">+</p>
+    <p>6</p><p>5</p><p>4</p>
+     <h3 style="color: #40a1ff;">×</h3>
+    <p>3</p><p>2</p><p>1</p>
+     <h3 style="color: #40a1ff;">÷</h3>
+  <h2>=</h2><p>0</p> <h4 style="color:red;">C</h4><p style="color: #40a1ff;">-</p>
+  
+    </div>
+    
+ <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyBqarNRlh_rZ96ISZzDNNYqbYSKVd9jvSQ",
+    authDomain: "first-project-e3d7a.firebaseapp.com",
+    projectId: "first-project-e3d7a",
+    storageBucket: "first-project-e3d7a.appspot.com",
+    messagingSenderId: "298963637620",
+    appId: "1:298963637620:web:f2c6a953bc345f16994821",
+    measurementId: "G-8K4B391J5L"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
+</body>
+</html>
