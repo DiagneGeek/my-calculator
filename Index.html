@@ -4,9 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport"content="maximum-scale=1.0,width=device-width"/>
     <title>calculatrice</title>
-<link rel="stylesheet" href="style.css">
-<script src="script.js" defer></script>
 </head>
+<style>
+  *{
+    margin: 0;
+    padding: 0;
+}
+body {
+    width: 54vh;
+    height: 87vh;
+    overflow:hidden ;
+    background:  #0c0e2f;
+    -webkit-user-select:none;
+}
+.calcu{
+    width: 100%;
+    height: 100%;
+    display:grid ;
+    grid-template-columns:24.5% 24.5% 24.5% 26%;
+    grid-template-rows:22% 22% 22% 22%;
+}
+.calcu p,.calcu h3,.calcu h2,h4{
+    height:100%;
+    color:white;
+    Font-size:33px;
+    border: solid 0.5px white;
+    display:flex ;
+    align-items:center;
+    justify-content:center;
+}
+p:hover{
+    animation:a1 1.5s;
+}
+@keyframes a1{
+   0%{transform:scale(1.1);background: #4077ff6f;}
+   70%{transform:scale(1);background: transparent;}
+}
+input{
+    width: 83%;
+    height: 25%;
+    color:white;
+    outline:none ;
+    border:none;
+    background: #0c0e2f;
+    color: white;
+    font-size:29px;
+    text-align:right ;
+}
+.del{
+    width: 40px;
+    height: 40px;
+    color:white ;
+    position: absolute;
+    top: 8%;
+    right: 2%;
+}
+  
+</style>
 <body>
     <input type="text" readonly="t"><br>
     <div class="del"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -24,28 +78,46 @@
   
     </div>
     
- <script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
+ <script>
+  let inp=document.querySelector("input");
+let numbers = document.querySelectorAll("p");
+let md = document.querySelectorAll("h3");
+let egal = document.querySelector("h2");
 
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyBqarNRlh_rZ96ISZzDNNYqbYSKVd9jvSQ",
-    authDomain: "first-project-e3d7a.firebaseapp.com",
-    projectId: "first-project-e3d7a",
-    storageBucket: "first-project-e3d7a.appspot.com",
-    messagingSenderId: "298963637620",
-    appId: "1:298963637620:web:f2c6a953bc345f16994821",
-    measurementId: "G-8K4B391J5L"
-  };
+let t = []
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
+numbers.forEach((number) => {
+   number.addEventListener("click", (e) => {
+      t.push(e.target.innerHTML);
+      inp.value=t.join("")
+   }) 
+})
+md.forEach((number) => {
+   number.addEventListener("click", (e) => {
+      if(e.target.innerHTML=="×") {
+         t.push("*")
+         inp.value+="*";
+      }
+      else{
+           t.push("/")
+         inp.value+="/";
+      }
+   }) 
+})
+egal.onclick = () => {
+    inp.value=eval(inp.value);
+    const t2 = inp.value.split("")
+    t=inp.value.split("")
+}
+document.querySelector("h4").onclick = () => {
+     t=[]
+     inp.value=t
+     
+}
+document.querySelector(".del").onclick = () => {
+    t.pop();
+    inp.value=t.join("");
+}
 </script>
 </body>
 </html>
