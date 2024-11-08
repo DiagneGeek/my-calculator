@@ -19,51 +19,10 @@
   <script>
     // 1. Table de routage: chaque chemin est lié à une fonction d'affichage
 const routes = {
-  '/': () => document.getElementById('content').innerHTML = `<body>
-  <input type="text"/>
-  <button onclick="addTodo()">add</button>
-<p class="message" style="display:none">you have exceeded the maximum todo</p>
-  <ul></ul>
-  
-  <script>
-    let todos = []
-    let input = document.querySelector("input");
-    let messageEl = document.querySelector(".message");
-    let ul = document.querySelector("ul");
+  '/': () => document.getElementById('content').innerHTML = `home
     
-    function renderTodos() {
-             let t = ''
-             for(todo of todos){
-                t += `<li>
-                    <input type="checkbox">
-                    <span>${todo}</span>
-                    <button onclick="deleteTodo('${todo}')">delete</button>
-                  </li>`
-    }
-    ul.innerHTML = t
-    }
    
-    
-    function addTodo() {
-      if(todos.length < 10) {
-        todos.push(input.value);
-        renderTodos();
-        input.value = ""
-      }else{
-        messageEl.style.display = "block"
-      }
-    }
-    
-    function deleteTodo(todo) {
-        todos = todos.filter(t => t != todo )
-        renderTodos();
-         if(todos.length < 10) {
-            messageEl.style.display = "none"
-         }
-    }
-  </script>
-  <script src="test.js"></script>
-</body>`,
+     `,
   '/about': () => document.getElementById('content').innerHTML = "<h1>A propos</h1><p>Page A propos.</p>",
   '/contact': () => document.getElementById('content').innerHTML = "<h1>Contact</h1><p>Contactez-nous ici.</p>"
 };
