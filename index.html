@@ -1,0 +1,52 @@
+
+  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SPA avec Routage Vanilla JS</title>
+</head>
+<body>
+  <nav>
+    <button id="nav-home">Accueil</button>
+    <button id="nav-about">A propos</button>
+    <button id="nav-contact">Contact</button>
+  </nav>
+  
+  <div id="content"></div>
+  
+  <script>
+    // 1. Table de routage: chaque chemin est lié à une fonction d'affichage
+const routes = {
+  '/': () => document.getElementById('content').innerHTML = "<h1>Accueil</h1><p>Bienvenue sur la page d'accueil !</p>",
+  '/about': () => document.getElementById('content').innerHTML = "<h1>A propos</h1><p>Page A propos.</p>",
+  '/contact': () => document.getElementById('content').innerHTML = "<h1>Contact</h1><p>Contactez-nous ici.</p>"
+};
+
+// 2. Fonction pour gérer la navigation
+function navigateTo(path) {
+  // Utilise pushState pour changer l'URL sans rechargement
+  window.history.pushState({}, path, window.location.origin + path);
+  // Appelle la fonction correspondante dans la table de routage
+  routes[path]();
+}
+
+// 3. Fonction pour gérer les événements popstate (back/forward)
+window.onpopstate = () => {
+  // Exécute la fonction associée à l'URL actuelle
+  routes[window.location.pathname]();
+};
+
+// 4. Initialisation : Charger la bonne page en fonction de l'URL actuelle
+document.addEventListener('DOMContentLoaded', () => {
+  routes[window.location.pathname]();
+});
+
+// 5. Exemple d'usage : Ajouter des listeners aux boutons de navigation
+document.getElementById('nav-home').addEventListener('click', () => navigateTo('/'));
+document.getElementById('nav-about').addEventListener('click', () => navigateTo('/about'));
+document.getElementById('nav-contact').addEventListener('click', () => navigateTo('/contact'));
+  </script>
+</body>
+</html>
