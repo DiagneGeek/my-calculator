@@ -26,7 +26,7 @@ document.addEventListener('click', (event) => {
 
 // Initial page load and handling back/forward navigation
 window.addEventListener('DOMContentLoaded', () => {
-  renderRoute("/");
+  renderRoute(window.location.pathname);
   window.addEventListener('popstate', () => {
   renderRoute(window.location.pathname);
   });
