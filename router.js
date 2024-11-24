@@ -11,7 +11,7 @@ const navigate = (path) => {
 };
 
 const renderRoute = (path) => {
-console.log(path);
+  document.querySelector("p").innerHTML = path
   const content = routes[path] || routes['*'];
  document.getElementById('content').innerHTML = content();
 };
